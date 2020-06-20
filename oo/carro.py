@@ -94,6 +94,7 @@ O       L
     'Oeste'
 """
 
+
 class Motor:
     def __init__(self, velocidade=0):
         self.velocidade = velocidade
@@ -102,15 +103,24 @@ class Motor:
         self.velocidade += 1
 
     def frear(self):
-        if self.velocidade > 2:
-            self.velocidade -= 2
-        else:
-            self.velocidade = 0
+        # if self.velocidade > 2:
+        #     self.velocidade -= 2
+        # else:
+        #     self.velocidade = 0
+        self.velocidade -= 2
+        self.velocidade = max(0, self.velocidade)
+
+
+NORTE = 'Norte'
+LESTE = 'Leste'
+SUL = 'Sul'
+OESTE = 'Oeste'
 
 
 class Direcao:
-    direcoes = ['Norte', 'Leste', 'Sul', 'Oeste']
-    def __init__(self, direcao=0 ):
+    direcoes = [NORTE, LESTE, SUL, OESTE]
+
+    def __init__(self, direcao=0):
         self.direcao = direcao
         self.valor = Direcao.direcoes[self.direcao]
 
@@ -128,9 +138,8 @@ class Direcao:
         if self.direcao > 0:
             self.direcao -= 1
         else:
-            self.direcao = len(Direcao.direcoes)-1
+            self.direcao = len(Direcao.direcoes) - 1
         self.valor = Direcao.direcoes[self.direcao]
-
 
 
 class Carro:
